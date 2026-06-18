@@ -16,3 +16,38 @@ rm -rf node_exporter*
  
 node_exporter --version
 
+
+
+# Create / update the systemd service (tee just overwrites, safe to re-run)
+sudo tee /etc/systemd/system/node_exporter.service > /dev/null <<'EOF'
+[Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+User=node_exporter
+Group=node_exporter
+Type=simple
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/local/bin/node_exporter \
+    --collector.logind
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Enable and (re)start Node Exporter — restart so a re-run picks up any service-file changes
+sudo systemctl daemon-reload
+sudo systemctl enable node_exporter
+sudo systemctl restart node_exporter
+sudo systemctl status node_exporter --no-pager
+
+echo "=============================="
+echo " Node Exporter started successfully"
+echo " URL:  http://<SERVER-IP>:9100"
+echo " Logs: journalctl -u node_exporter -f --no-pager"
+echo "=============================="
