@@ -77,9 +77,3 @@ Devsecops-2048/
 Built as part of a DevOps/Cloud project — deploying a game end-to-end through a real DevSecOps pipeline, with full observability.
 
 Game UI originally based on [Mateusz Sokola's 2048-in-react](https://github.com/mateuszsokola/2048-in-react).
-
----
-
-## 📄 License
-
-Licensed under the MIT License.
