@@ -74,7 +74,7 @@ Devsecops-2048/
 
 **Shefat Faisal** GitHub: [@shefatfaisal](https://github.com/shefatfaisal)
 
-Built as part of a DevOps/Cloud internship project — deploying a game end-to-end through a real DevSecOps pipeline, with full observability.
+Built as part of a DevOps/Cloud project — deploying a game end-to-end through a real DevSecOps pipeline, with full observability.
 
 Game UI originally based on [Mateusz Sokola's 2048-in-react](https://github.com/mateuszsokola/2048-in-react).
 
